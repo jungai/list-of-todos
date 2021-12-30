@@ -1,0 +1,55 @@
+<div class="container">
+  <h1>With <span class="app-color">${appName}</span></h1>
+  <input
+    class="input"
+    placeholder="กรอก ...."
+    on-change('handleChange')
+    on-keyup('addTodo')
+  />
+  <ul class="display">
+    <for|item, index| of=state.todos>
+      <li class="item" key=index>
+        ${item}
+        <button on-click('removeTodo', index)>
+          X
+        </button>
+      </li>
+    </for>
+  </ul>
+</div>
+
+import '../../../../core.css'
+
+static const appName = "Marko"
+
+class {
+  onCreate() {
+
+    this.state = {
+      todos: [],
+      newTodo: ""
+    }
+  }
+
+  addTodo(event) {
+    event.preventDefault();
+    if (event.code !== "Enter") return;
+
+    this.state.todos.push(this.state.newTodo)
+    this.state.newTodo = ""
+  }
+
+  removeTodo(index) {
+    this.state.todos = [...this.state.todos.slice(0, index), ...this.state.todos.slice(index + 1)]
+  }
+
+  handleChange(event) {
+    this.state.newTodo = event.target.value
+  }
+}
+
+style {
+  :root {
+    --app-color: red;
+  }
+}
