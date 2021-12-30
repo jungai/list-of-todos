@@ -1,0 +1,13 @@
+{
+  "name": "petite-vue",
+  "version": "1.0.0",
+  "main": "index.html",
+  "scripts": {
+    "dev": "cp -r ../core.css ./core.css && vite"
+  },
+  "author": "jungai",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^2.7.10"
+  }
+}

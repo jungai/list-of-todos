@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="core.css" />
+    <style>
+      :root {
+        --app-color: #1abc9c;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="module">
+      import { createApp } from "https://unpkg.com/petite-vue?module";
+
+      createApp({
+        todos: [],
+        newTodo: "",
+        // be careful about `lexical this`
+        addTodo() {
+          this.todos.push(this.newTodo);
+          this.newTodo = "";
+        },
+        removeTodo(index) {
+          this.todos.splice(index, 1);
+        },
+      }).mount();
+    </script>
+    <div class="container" v-scope>
+      <h1>With <span class="app-color">Petite-vue</span></h1>
+      <input
+        class="input"
+        v-model="newTodo"
+        placeholder="กรอก ...."
+        @keyup.enter="addTodo"
+      />
+      <ul class="display">
+        <li class="item" v-for="(todo, index) in todos" :key="index">
+          {{ todo }}
+          <button @click="removeTodo(index)">X</button>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
