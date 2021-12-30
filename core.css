@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.vue {
+  color: green;
+}
+.container > .input {
+  padding: 1rem;
+}
+
+.container > .input:focus {
+  border: 2px solid green;
+  outline: none;
+}
+
+.container > .display {
+  list-style: none;
+  max-width: 400px;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.container > .display > .item {
+  margin: 0.5rem 0;
+  border: 1px solid gainsboro;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
