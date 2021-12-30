@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 // reactive state
 const newTodo = ref("");
@@ -13,11 +13,15 @@ const addTodo = () => {
 const removeTodo = (index: number) => {
   todos.value.splice(index, 1);
 };
+
+onMounted(() => {
+  document.documentElement.style.setProperty("--app-color", "green");
+});
 </script>
 
 <template>
   <div class="container">
-    <h1>With <span class="vue">Vue</span></h1>
+    <h1>With <span class="app-color">Vue</span></h1>
     <input
       class="input"
       v-model="newTodo"
