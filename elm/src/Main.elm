@@ -59,13 +59,15 @@ update msg model =
 
 viewTodo : List String -> Html Msg
 viewTodo todos =
-    todos |> List.indexedMap (\index val -> li [ class "item" ] [ text val, button [ onClick (RemoveTodo index) ] [ text "X" ] ]) |> ul [ class "display" ]
+    todos
+        |> List.indexedMap (\index val -> li [ class "item" ] [ text val, button [ onClick (RemoveTodo index) ] [ text "X" ] ])
+        |> ul [ class "display" ]
 
 
 view : Model -> Html Msg
 view model =
     div [ class "container" ]
-        [ h1 [] [ text "With", span [ class "app-color" ] [ text "Elm" ] ]
+        [ h1 [] [ text "With ", span [ class "app-color" ] [ text "Elm" ] ]
         , input [ class "input", value model.newTodo, onInput HandleChange, onKeyUp AddTodo ] []
         , viewTodo model.todos
         ]
